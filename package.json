@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start":"node server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "engine":"6.11.3",
+  "author": "Ofir Boaron",
   "license": "ISC",
   "dependencies": {
     "express": "^4.15.5",
