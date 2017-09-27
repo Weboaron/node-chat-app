@@ -4,14 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start":"node server/server.js",
+    "start": "node server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "engine":"6.11.3",
+  "engine": "6.11.3",
   "author": "Ofir Boaron",
   "license": "ISC",
   "dependencies": {
     "express": "^4.15.5",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "socket.io": "^2.0.3"
   }
 }
