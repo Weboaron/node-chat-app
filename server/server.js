@@ -13,7 +13,7 @@ app.use(express.static(publicPath))
 
 io.on('connection',(socket)=>{
   console.log('New user connected');
-  
+
   socket.emit('newMessage',{
     from: "Ofir",
     text: "Hello There",
@@ -22,6 +22,16 @@ io.on('connection',(socket)=>{
 
   socket.on('createMessage',(mail)=>{
       console.log("Message:",mail)
+  })
+
+  socket.on('welcomeMessage',(user)=>{
+    socket.emit('welcomeMessage',{
+      message:`Hello there ${user.username}`
+    })
+
+    socket.broadcast.emit('welcomeMessage',{
+      message:`${user.username} just logged in`
+    })
   })
 
   socket.on('disconnect',(socket)=>{

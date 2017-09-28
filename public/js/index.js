@@ -5,6 +5,18 @@ socket.on('connect',function(){
 
 })
 
+socket.emit('welcomeMessage',{
+  username:"Ofir Boaron"
+})
+
+socket.on('welcomeMessage',function(message){
+  console.log(message.message)
+})
+
+socket.on('New welcome',function(message){
+  console.log(message.message)
+})
+
 socket.on('newMessage',function(email){
   console.log(`New Email From:${email.from} message:"${email.text}" Create:${email.createdAt}`)
 })
