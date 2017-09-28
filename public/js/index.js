@@ -10,11 +10,11 @@ socket.emit('welcomeMessage',{
 })
 
 socket.on('welcomeMessage',function(message){
-  console.log(message.message)
+  console.log(message)
 })
 
 socket.on('New welcome',function(message){
-  console.log(message.message)
+  console.log(message)
 })
 
 socket.on('newMessage',function(email){
