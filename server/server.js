@@ -17,9 +17,12 @@ app.use(express.static(publicPath))
 io.on('connection',(socket)=>{
   console.log('New user connected');
 
-  socket.on('createMessage',(mail)=>{
+  socket.on('createMessage',(mail,callback)=>{
     console.log(mail)
-    socket.broadcast.emit('newMessage',generateMessage(mail.from,mail.text))
+  //  socket.broadcast.emit('newMessage',generateMessage(mail.from,mail.text))
+    io.emit('newMessage',generateMessage(mail.from,mail.text))
+
+    callback();
   })
 
   socket.on('welcomeMessage',(user)=>{
