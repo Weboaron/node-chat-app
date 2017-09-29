@@ -1,3 +1,4 @@
+
 const express = require('express');
 const path = require('path');
 const http = require('http');
@@ -16,16 +17,16 @@ app.use(express.static(publicPath))
 io.on('connection',(socket)=>{
   console.log('New user connected');
 
-  socket.emit('newMessage',generateMessage('Admin','Welcome to the chat app'))
-
   socket.on('createMessage',(mail)=>{
-      console.log("Message:",mail)
+    console.log(mail)
+    socket.broadcast.emit('newMessage',generateMessage(mail.from,mail.text))
   })
 
   socket.on('welcomeMessage',(user)=>{
-    socket.emit('welcomeMessage',{generateMessage('Admin',`Hello there ${user.username}`)})
+    //socket.emit('welcomeMessage',{generateMessage('Admin',`Hello there ${user.username}`)})
+    socket.emit('newMessage',generateMessage('Admin',`Hello there ${user.username}`))
 
-    socket.broadcast.emit('welcomeMessage',{generateMessage('Admin',`${user.username} just logged in`)})
+    socket.broadcast.emit('newMessage',generateMessage('Admin',`${user.username} just logged in`))
   })
 
   socket.on('disconnect',(socket)=>{
