@@ -6,13 +6,14 @@
   "scripts": {
     "start": "node server/server.js",
     "test": "mocha server/**/*.test.js",
-    "test-watch":"nodemon --exec 'mpm test'"
+    "test-watch": "nodemon --exec 'mpm test'"
   },
   "engine": "6.11.3",
   "author": "Ofir Boaron",
   "license": "ISC",
   "dependencies": {
     "express": "^4.15.5",
+    "moment": "^2.18.1",
     "path": "^0.12.7",
     "socket.io": "^2.0.3"
   },
