@@ -22,7 +22,7 @@ describe('genetateLocationMessage',()=>{
     url = 'https://www.google.com/maps?q=15,19'
     var res=generateLocationMessage(from,lat,lan);
     expect(res.createAt).toBeA('number')
-    expect(res.form).toBe(from)
+    expect(res.from).toBe(from)
     expect(res.url).toBe(url)
 
   })

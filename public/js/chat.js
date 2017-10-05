@@ -15,10 +15,18 @@ function scrollToButton(){
 
 }
 
-socket.on('connect',function(){
-  console.log('Connected to server');
+socket.on('connect', function () {
+  var params = jQuery.deparam(window.location.search);
 
-})
+  socket.emit('join', params, function (err) {
+    if (err) {
+      alert(err);
+      window.location.href = '/';
+    } else {
+      console.log('No error');
+    }
+  });
+});
 
 socket.emit('welcomeMessage',{
   username:"Ofir Boaron"
@@ -38,6 +46,16 @@ socket.on('disconnect',function(socket){
   console.log("Disconnected from server")
 })
 
+
+socket.on('updateUserList', function (users) {
+  var ol = jQuery('<ol></ol>');
+
+  users.forEach(function (user) {
+    ol.append(jQuery('<li></li>').text(user));
+  });
+
+  jQuery('#users').html(ol);
+});
 
 jQuery('#message-form').on('submit',function(e){
   e.preventDefault();
